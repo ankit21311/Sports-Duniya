@@ -4,9 +4,11 @@ services:
     env: static
     buildCommand: npm install --legacy-peer-deps && node build.js
     staticPublishPath: build
+    startCommand: serve -s build -p $PORT
     envVars:
       - key: NODE_VERSION
         value: 16.20.2
+    healthCheckPath: /
     headers:
       - path: /**
         name: Cache-Control
