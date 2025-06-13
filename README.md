@@ -109,7 +109,7 @@ sports-dunia/
 4. **Run the app in development mode:**
 
    ```bash
-   npm start
+   node react-dev-server.js
    ```
 
 5. Open [http://localhost:3000](http://localhost:3000) in your browser.
