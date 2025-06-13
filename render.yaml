@@ -2,7 +2,7 @@ services:
   - type: web
     name: sports-dunia
     env: static
-    buildCommand: npm install --no-save && node build.js
+    buildCommand: node build.js
     staticPublishPath: build
     envVars:
       - key: NODE_VERSION
