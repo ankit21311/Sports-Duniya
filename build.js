@@ -45,6 +45,24 @@ try {
     // Continue with the build process
 }
 
+// Install serve for production use
+try {
+    console.log('Installing serve for production...');
+    execSync('npm install serve --save', {stdio: 'inherit'});
+
+    // Set executable permissions for serve on Unix systems
+    if (os.platform() !== 'win32') {
+        const servePath = path.join('node_modules', '.bin', 'serve');
+        if (fs.existsSync(servePath)) {
+            console.log(`Setting executable permissions on ${servePath}`);
+            fs.chmodSync(servePath, '755');
+            console.log('Serve permissions set successfully');
+        }
+  }
+} catch (error) {
+    console.error('Error installing serve:', error);
+}
+
 // Check if we're on a Unix-like system
 if (os.platform() !== 'win32') {
     const reactScriptsPath = path.join('node_modules', '.bin', 'react-scripts');
@@ -118,17 +136,17 @@ try {
       };
     `;
 
-        // Install additional required dependencies for the fallback approach
-        console.log('Installing webpack dependencies for fallback build...');
-        execSync('npm install --no-save webpack webpack-cli babel-loader @babel/core @babel/preset-env @babel/preset-react html-webpack-plugin style-loader css-loader sass-loader', {stdio: 'inherit'});
+      // Install additional required dependencies for the fallback approach
+      console.log('Installing webpack dependencies for fallback build...');
+      execSync('npm install --no-save webpack webpack-cli babel-loader @babel/core @babel/preset-env @babel/preset-react html-webpack-plugin style-loader css-loader sass-loader', {stdio: 'inherit'});
 
-        // Write the webpack config file
-        fs.writeFileSync(webpackConfigPath, webpackConfig);
+      // Write the webpack config file
+      fs.writeFileSync(webpackConfigPath, webpackConfig);
 
-        // Run webpack directly
-        console.log('Running webpack build...');
-        execSync('npx webpack', {stdio: 'inherit'});
-    }
+      // Run webpack directly
+      console.log('Running webpack build...');
+      execSync('npx webpack', {stdio: 'inherit'});
+  }
 
     console.log('Build completed successfully');
 } catch (error) {
