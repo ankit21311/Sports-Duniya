@@ -2,11 +2,11 @@ services:
   - type: web
     name: sports-dunia
     env: static
-    buildCommand: npm ci && node build.js
+    buildCommand: npm install --legacy-peer-deps && node build.js
     staticPublishPath: build
     envVars:
       - key: NODE_VERSION
-        value: 18.19.1
+        value: 16.20.2
     headers:
       - path: /**
         name: Cache-Control

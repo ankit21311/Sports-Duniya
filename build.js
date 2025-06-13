@@ -6,40 +6,43 @@ const os = require('os');
 
 console.log('Starting build process...');
 
-// Check if we need to fix the ajv-keywords module
+// Force install specific versions of ajv and ajv-keywords
 try {
-    console.log('Checking for missing dependencies...');
+    console.log('Installing specific versions of ajv dependencies...');
+    execSync('npm install ajv@8.12.0 ajv-keywords@5.1.0 --no-save', {stdio: 'inherit'});
+    console.log('Dependencies installed successfully');
 
-    // Try to resolve the missing module to see if it exists
-    try {
-        require.resolve('ajv');
-    } catch (e) {
-        console.log('Installing missing ajv dependency...');
-        execSync('npm install ajv@8.12.0', {stdio: 'inherit'});
+    // Create a symlink for missing modules if needed
+    const ajvDir = path.join('node_modules', 'ajv', 'dist');
+    if (fs.existsSync(ajvDir)) {
+        const compileDir = path.join(ajvDir, 'compile');
+        const runtimeDir = path.join(ajvDir, 'runtime');
+
+        // Check if compile directory exists, if not create it
+        if (!fs.existsSync(compileDir)) {
+            console.log('Creating missing compile directory...');
+            fs.mkdirSync(compileDir, {recursive: true});
     }
 
-    // Fix for ajv-keywords
-    const ajvKeywordsDir = path.join('node_modules', 'ajv-keywords', 'dist', 'definitions');
-    if (fs.existsSync(ajvKeywordsDir)) {
-        const typeofFile = path.join(ajvKeywordsDir, 'typeof.js');
-        if (fs.existsSync(typeofFile)) {
-            let content = fs.readFileSync(typeofFile, 'utf8');
-
-            // Check if file needs patching
-            if (content.includes("require('ajv/dist/compile/equal')")) {
-                console.log('Patching ajv-keywords to fix build issue...');
-                content = content.replace(
-                    "require('ajv/dist/compile/equal')",
-                    "require('ajv/dist/runtime/equal')"
-                );
-                fs.writeFileSync(typeofFile, content);
-                console.log('ajv-keywords patched successfully');
-            }
+      // Check if codegen.js exists in runtime, if so copy it to compile
+      const runtimeCodegen = path.join(runtimeDir, 'codegen.js');
+      const compileCodegen = path.join(compileDir, 'codegen.js');
+      if (fs.existsSync(runtimeCodegen) && !fs.existsSync(compileCodegen)) {
+          console.log('Copying codegen.js from runtime to compile directory...');
+          fs.copyFileSync(runtimeCodegen, compileCodegen);
     }
+
+      // Check if equal.js exists in runtime, if so copy it to compile
+      const runtimeEqual = path.join(runtimeDir, 'equal.js');
+      const compileEqual = path.join(compileDir, 'equal.js');
+      if (fs.existsSync(runtimeEqual) && !fs.existsSync(compileEqual)) {
+          console.log('Copying equal.js from runtime to compile directory...');
+          fs.copyFileSync(runtimeEqual, compileEqual);
+      }
   }
 } catch (error) {
-    console.error('Error fixing dependencies:', error);
-    // Continue with build process even if fixing fails
+    console.error('Error installing or patching dependencies:', error);
+    // Continue with the build process
 }
 
 // Check if we're on a Unix-like system
@@ -55,12 +58,80 @@ if (os.platform() !== 'win32') {
     }
 }
 
-// Run the build command using the direct path to build.js
+// Now try an alternative approach - use create-react-app's build directly
 try {
     console.log('Running build script...');
-    execSync('node node_modules/react-scripts/scripts/build.js', {stdio: 'inherit'});
+
+    // First try the standard build method
+    try {
+        execSync('node node_modules/react-scripts/scripts/build.js', {stdio: 'inherit'});
+    } catch (buildError) {
+        console.error('Standard build failed, trying alternative approach...');
+
+        // Create a minimal webpack config
+        const webpackConfigPath = path.join('webpack.config.js');
+        const webpackConfig = `
+      const path = require('path');
+      const HtmlWebpackPlugin = require('html-webpack-plugin');
+      
+      module.exports = {
+        mode: 'production',
+        entry: './src/index.js',
+        output: {
+          path: path.resolve(__dirname, 'build'),
+          filename: 'static/js/[name].[contenthash:8].js',
+        },
+        module: {
+          rules: [
+            {
+              test: /\.(js|jsx)$/,
+              exclude: /node_modules/,
+              use: {
+                loader: 'babel-loader',
+                options: {
+                  presets: ['@babel/preset-env', '@babel/preset-react']
+                }
+              }
+            },
+            {
+              test: /\.css$/,
+              use: ['style-loader', 'css-loader'],
+            },
+            {
+              test: /\.(scss|sass)$/,
+              use: ['style-loader', 'css-loader', 'sass-loader'],
+            },
+            {
+              test: /\.(png|jpe?g|gif|svg)$/i,
+              type: 'asset/resource',
+            },
+          ],
+        },
+        plugins: [
+          new HtmlWebpackPlugin({
+            template: './public/index.html',
+          }),
+        ],
+        resolve: {
+          extensions: ['.js', '.jsx'],
+        },
+      };
+    `;
+
+        // Install additional required dependencies for the fallback approach
+        console.log('Installing webpack dependencies for fallback build...');
+        execSync('npm install --no-save webpack webpack-cli babel-loader @babel/core @babel/preset-env @babel/preset-react html-webpack-plugin style-loader css-loader sass-loader', {stdio: 'inherit'});
+
+        // Write the webpack config file
+        fs.writeFileSync(webpackConfigPath, webpackConfig);
+
+        // Run webpack directly
+        console.log('Running webpack build...');
+        execSync('npx webpack', {stdio: 'inherit'});
+    }
+
     console.log('Build completed successfully');
 } catch (error) {
-    console.error('Build failed:', error);
+    console.error('All build attempts failed:', error);
     process.exit(1);
 }
