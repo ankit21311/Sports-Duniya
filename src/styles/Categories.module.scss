@@ -1,0 +1,127 @@
+@import 'variables';
+
+.categoriesPage {
+  background-color: $dark-bg;
+  min-height: 100vh;
+  color: $text-color;
+}
+
+.main {
+  padding: 40px 0;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.pageHeader {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.pageTitle {
+  font-size: 32px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.pageDescription {
+  color: $text-muted;
+  font-size: 18px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Stats Section */
+.statsSection {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 50px;
+  background-color: $card-bg;
+  border-radius: $border-radius;
+  padding: 30px;
+  @include card-shadow;
+
+  @include responsive(md) {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  @include responsive(xs) {
+    padding: 20px;
+  }
+}
+
+.statItem {
+  text-align: center;
+  flex: 1;
+
+  @include responsive(md) {
+    flex-basis: 45%;
+  }
+
+  @include responsive(xs) {
+    flex-basis: 100%;
+  }
+}
+
+.statValue {
+  display: block;
+  font-size: 32px;
+  font-weight: 700;
+  color: $primary-color;
+  margin-bottom: 5px;
+}
+
+.statLabel {
+  font-size: 16px;
+  color: $text-muted;
+}
+
+/* Categories Grid */
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-bottom: 50px;
+
+  @include responsive(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include responsive(xs) {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Popular Topics */
+.popularTopics {
+  margin-bottom: 50px;
+}
+
+.sectionTitle {
+  @include section-title;
+}
+
+.topicTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.topicTag {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: $card-bg;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color $transition-speed ease;
+
+  &:hover {
+    background-color: $primary-color;
+  }
+}
