@@ -6,9 +6,10 @@
   background: rgba(26, 26, 26, 0.95);
   backdrop-filter: blur(10px);
   border: none;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  max-width: 900px;
   width: 100%;
 }
 
@@ -277,12 +278,26 @@
 
 /* Responsive Design */
 @media (max-width: 1200px) {
+  .liveScoresTicker {
+    max-width: 100%;
+    margin: 0 20px;
+  }
+
   .tickerContainer {
-    max-width: 1200px;
+    max-width: 900px;
+    padding: 0 15px;
+  }
+
+  .liveButton {
+    left: 15px;
+  }
+
+  .allMatchesButton {
+    right: 15px;
   }
 
   .scoresContainer {
-    padding: 12px 20px;
+    padding: 12px 0;
     gap: 10px;
   }
 
@@ -291,25 +306,30 @@
     max-width: 160px;
   }
 
-  .allMatchesButton {
-    margin-right: 20px;
+  .matchCard:first-child {
+    margin-left: 70px;
   }
 }
 
 @media (max-width: 768px) {
+  .liveScoresTicker {
+    margin: 0 15px;
+  }
+
   .tickerContainer {
-    max-width: 100%;
+    padding: 0 10px;
   }
 
   .liveButton {
     padding: 4px 8px;
     font-size: 10px;
     min-height: 24px;
+    left: 10px;
   }
 
   .scoresContainer {
     margin-top: 24px;
-    padding: 8px 15px;
+    padding: 8px 0;
     gap: 8px;
   }
 
@@ -320,13 +340,14 @@
   }
 
   .matchCard:first-child {
-    margin-left: 48px;
+    margin-left: 60px;
   }
 
   .allMatchesButton {
-    margin-right: 15px;
+    right: 10px;
     font-size: 9px;
     padding: 6px 10px;
+    min-height: 24px;
   }
 
   .teamName {
@@ -346,19 +367,24 @@
 }
 
 @media (max-width: 480px) {
+  .liveScoresTicker {
+    margin: 0 10px;
+  }
+
   .tickerContainer {
-    max-width: 100%;
+    padding: 0 5px;
   }
 
   .liveButton {
     padding: 3px 6px;
     font-size: 9px;
     min-height: 20px;
+    left: 5px;
   }
 
   .scoresContainer {
     margin-top: 20px;
-    padding: 6px 10px;
+    padding: 6px 0;
     gap: 6px;
   }
 
@@ -369,13 +395,14 @@
   }
 
   .matchCard:first-child {
-    margin-left: 36px;
+    margin-left: 50px;
   }
 
   .allMatchesButton {
-    margin-right: 10px;
+    right: 5px;
     font-size: 8px;
     padding: 4px 8px;
+    min-height: 20px;
   }
 
   .team {

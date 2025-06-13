@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import Header from '../components/Header';
-import LiveScoresTicker from '../components/LiveScoresTicker';
 import NewsCard from '../components/NewsCard';
 import Sidebar from '../components/Sidebar';
 import Pagination from '../components/Pagination';
@@ -156,7 +155,6 @@ const News = ({articles: initialArticles}) => {
             <main className={styles.main}>
                 <div className={styles.container}>
                     <h1 className={styles.pageTitle}>Latest Sports News</h1>
-                    <LiveScoresTicker/>
 
                     {/* Category Filter */}
                     <div className={styles.categoryFilter}>

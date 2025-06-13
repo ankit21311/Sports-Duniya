@@ -14,6 +14,8 @@ function App() {
                 <Route path="/news" element={<News/>}/>
                 <Route path="/categories" element={<Categories/>}/>
                 <Route path="/gaming" element={<GamesPage/>}/>
+                <Route path="/category/gaming" element={<GamesPage/>}/>
+                <Route path="/category/esports" element={<GamesPage/>}/>
             </Routes>
         </div>
     );
