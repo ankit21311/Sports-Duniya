@@ -1,6 +1,6 @@
 # SportsDunia
 
-SportsDunia is a modern sports news website built with React. It provides the latest updates from various sports
+Showcase of Original Website of Sports Dunia , I did some modifications to make it more interactive . SportsDunia is a modern sports news website built with React. It provides the latest updates from various sports
 categories including cricket, football, tennis, and more.
 
 ## Features
@@ -39,7 +39,7 @@ npm install
 npm start
 ```
 
-The application will be available at http://localhost:3000
+The application will be available at (https://sports-duniya-7lbx.onrender.com)
 
 ## Project Structure
 
