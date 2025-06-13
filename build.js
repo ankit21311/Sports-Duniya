@@ -324,6 +324,64 @@ try {
             </div>
         </div>
         
+        <!-- Additional News Section with More Photos -->
+        <h2 class="section-title mt-5">More Sports News</h2>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1560012307-9b42fb379c78?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Tennis">
+                    <div class="card-body">
+                        <h5 class="card-title">Nadal Claims 14th French Open Title</h5>
+                        <p class="card-text">Rafael Nadal extends his record at Roland Garros with an impressive straight-sets victory in the final.</p>
+                        <a href="#" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1600679472829-3044539ce8ed?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Formula 1">
+                    <div class="card-body">
+                        <h5 class="card-title">Verstappen Wins Monaco Grand Prix</h5>
+                        <p class="card-text">Max Verstappen secures a dominant victory on the streets of Monaco, extending his championship lead.</p>
+                        <a href="#" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1526676037777-05a232554f77?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Golf">
+                    <div class="card-body">
+                        <h5 class="card-title">Johnson Wins PGA Championship</h5>
+                        <p class="card-text">Dustin Johnson claims his second major title with a spectacular final round performance.</p>
+                        <a href="#" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1565992441121-4367c2967103?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Boxing">
+                    <div class="card-body">
+                        <h5 class="card-title">Fury Defends Heavyweight Title</h5>
+                        <p class="card-text">Tyson Fury successfully defends his heavyweight crown with a knockout victory in the sixth round.</p>
+                        <a href="#" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="card-img-top" alt="Athletics">
+                    <div class="card-body">
+                        <h5 class="card-title">World Record Broken at Olympics</h5>
+                        <p class="card-text">Elaine Thompson-Herah breaks the Olympic record in the women's 100m final, securing gold for Jamaica.</p>
+                        <a href="#" class="btn btn-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <h2 class="section-title mt-5">Live Scores</h2>
         <div class="card mb-4">
             <div class="card-body">

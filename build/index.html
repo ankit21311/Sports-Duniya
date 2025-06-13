@@ -1,1 +1,134 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><link rel="icon" href="/favicon.ico"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#000000"/><meta name="description" content="SportsDunia - Latest sports news, updates and analysis"/><link rel="apple-touch-icon" href="/logo192.png"/><link rel="manifest" href="/manifest.json"/><title>SportsDunia</title><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/><script defer="defer" src="/static/js/main.1b5eb105.js"></script><link href="/static/css/main.0b6b6589.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Dunia - Sports News</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background-color: #1a237e;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        h1, h2, h3 {
+            margin-top: 0;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -10px;
+        }
+
+        .col {
+            flex: 1;
+            padding: 0 10px;
+            min-width: 300px;
+        }
+
+        @media (max-width: 768px) {
+            .col {
+                flex: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>Sports Dunia</h1>
+        <p>Your one-stop destination for all sports news</p>
+    </div>
+</header>
+
+    <div class="container">
+        <h2>Latest News</h2>
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                         alt="Football">
+                    <div class="card-content">
+                        <h3>Champions League Final Set for Epic Showdown</h3>
+                        <p>The stage is set for an unforgettable night of football as the two giants prepare to face off
+                            in the Champions League final.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1587280501635-68a0e82cd5ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                         alt="Cricket">
+                    <div class="card-content">
+                        <h3>India Clinches T20 Series in Thrilling Final</h3>
+                        <p>In a nail-biting finish, India secured victory in the final over to win the T20 series
+                            against Australia.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                         alt="Basketball">
+                    <div class="card-content">
+                        <h3>NBA Playoffs: Lakers Advance to Conference Finals</h3>
+                        <p>LeBron James leads Lakers to a decisive victory, securing their spot in the Western
+                            Conference Finals.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2>Live Scores</h2>
+        <div class="card">
+            <div class="card-content">
+                <h3>Manchester United 2 - 1 Chelsea</h3>
+                <p>Premier League - 72'</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-content">
+                <h3>India 245/6 vs Australia</h3>
+                <p>T20 World Cup - 32 overs</p>
+            </div>
+        </div>
+    </div>
+
+    <footer style="background: #1a237e; color: white; text-align: center; padding: 20px; margin-top: 40px;">
+        <p>&copy; 2025 Sports Dunia. All rights reserved.</p>
+    </footer>
+</body>
+</html>
