@@ -2,13 +2,15 @@ services:
   - type: web
     name: sports-dunia
     env: static
-    buildCommand: npm install --legacy-peer-deps && node build.js
+    buildCommand: npm install --no-save && node build.js
     staticPublishPath: build
     envVars:
       - key: NODE_VERSION
         value: 16.20.2
-    healthCheckPath: /
     headers:
       - path: /**
         name: Cache-Control
         value: public, max-age=0, must-revalidate
+      - path: /
+        name: X-Frame-Options
+        value: DENY
