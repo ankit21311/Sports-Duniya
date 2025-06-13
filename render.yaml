@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: sports-dunia
+    env: static
+    buildCommand: npm install && node build.js
+    staticPublishPath: build
+    envVars:
+      - key: NODE_VERSION
+        value: 20.0.0
+    headers:
+      - path: /**
+        name: Cache-Control
+        value: public, max-age=0, must-revalidate
